@@ -4,6 +4,7 @@ import os, sys
 sys.path.append(os.path.join(os.path.dirname(__file__), "../classes"))
 
 import Send_Email
+import email_data
 
 class TestEmailServices(unittest.TestCase):
 
@@ -13,7 +14,7 @@ class TestEmailServices(unittest.TestCase):
         "email_subject": "Hello, how are you?",
         "recipient_email": "chrono232003@yahoo.com",
         "recipient_name": "Rec Mcgee",
-        "sender_email": "chrono232003@yahoo.com",
+        "sender_email": "info@greatoldgames.com",
         "sender_name": "Lance Test"
         },
         "email_content_fail":{
@@ -27,15 +28,15 @@ class TestEmailServices(unittest.TestCase):
     }
 
     #globally declare email and test_data classes
-    email = Send_Email.Send_Email(test_data['email_content_success'])
+    data = email_data.Data(test_data['email_content_success'])
+    email = Send_Email.Send_Email(data)
 
-    # def test_mail_gun_success(self):
-    #     self.assertEquals(self.email.send_via_mail_gun()['status_code'], 200)
-    #     self.assertEquals(self.email.send_via_mail_gun()['message'], "Queued. Thank you.")
+    def test_mail_gun_success(self):
+        self.assertEqual(self.email.send_via_mail_gun()['status_code'], 200)
+        self.assertEqual(self.email.send_via_mail_gun()['message'], "Queued. Thank you.")
 
-    def test_sendgrid_success(self):
-        self.assertEquals(self.email.send_via_sendgrid()['status_code'], 202)
-        self.assertEquals(self.email.send_via_sendgrid()['message'], "Queued. Thank you.")
+    # def test_sendgrid_success(self):
+    #     self.assertEqual(self.email.send_via_sendgrid()['status_code'], 202)
 
 
 if __name__ == '__main__':

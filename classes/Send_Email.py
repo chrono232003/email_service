@@ -1,42 +1,31 @@
 import requests
-
 import os, sys
+from dotenv import load_dotenv
+
 sys.path.append(os.path.join(os.path.dirname(__file__), "../constants"))
-import key_constants
+import const
+
+load_dotenv()
 
 class Send_Email:
 
-        to_email = ""
-        to_name = ""
-        from_email = ""
-        from_name = ""
-        subject = ""
-        body = ""
+        MAIL_GUN_API_KEY = os.getenv('MAIL_GUN_API_KEY')
+        SEND_GRID_API_KEY = os.getenv('SEND_GRID_API_KEY')
 
-        def __init__(self, email_content):
-            self.to_email = email_content['recipient_email']
-            self.to_name = email_content['recipient_name']
-            self.from_email = email_content['sender_email']
-            self.from_name = email_content['sender_name']
-            self.subject = email_content['email_subject']
-            self.body = email_content['email_body']
-
-        # def send_email():
-        #     #validate the fields to make sure we want to send the email_body
-        #
-        #     #send the email via one of the available services. They are ordered by priority.
-        #     try:
-        #
-        #     catch:
+        def __init__(self, data):
+            self.data = data
 
         def send_via_mail_gun(self):
-            resp = requests.post(
-		          "https://api.mailgun.net/v3/sandbox81a896c981834ea09476e7b153d9ba24.mailgun.org/messages",
-		          auth=("api", key_constants.MAIL_GUN_API_KEY),
-		          data={"from": self.from_name + " " + "<"+self.from_email+">",
-			      "to": [self.to_name, self.to_email],
-			      "subject": self.subject,
-			      "text": self.body})
+            mail_data = {
+            "url": "https://api.mailgun.net/v3/sandbox81a896c981834ea09476e7b153d9ba24.mailgun.org/messages",
+            "auth": ("api", self.MAIL_GUN_API_KEY),
+            "body": {"from": self.data.get_from_name() + " " + "<" + self.data.get_from_email() + ">",
+                "to": [self.data.get_to_name(), self.data.get_to_email()],
+                "subject": self.data.get_subject(),
+                "text": self.data.get_body()}
+            }
+            print(mail_data)
+            resp = requests.post(mail_data["url"], auth=mail_data["auth"],data=mail_data["body"])
 
             return {
                 "status_code": resp.status_code,
@@ -47,7 +36,7 @@ class Send_Email:
 
             mail_data = {
             "url": "https://api.sendgrid.com/v3/mail/send",
-            "headers": {'Authorization': 'Bearer ' + key_constants.SEND_GRID_API_KEY},
+            "headers": {'Authorization': 'Bearer ' + self.SEND_GRID_API_KEY},
             "body": {
                       "personalizations": [
                         {
@@ -76,6 +65,19 @@ class Send_Email:
             resp = requests.post(mail_data["url"], json=mail_data["body"], headers=mail_data["headers"])
 
             return {
-                "status_code": resp.status_code,
-                "message": resp.json()['message']
+                "status_code": resp.status_code
             }
+
+        def send_email(self):
+            try:
+                mg_resp = send_via_mail_gun()
+                if mg_resp.status_code != const.MAIL_GUN_SUCCESS_CODE:
+                    sg_resp = send_via_sendgrid()
+                    if sg_resp.status_code != const.SEND_GRID_SUCCESS_CODE:
+                        return const.EMAIL_FAILED_TO_SEND_MESSAGE
+                    else:
+                        return const.SUCCESS_MESSAGE_TO_USER
+                else:
+                    return const.SUCCESS_MESSAGE_TO_USER
+            except:
+                return const.TECHNICAL_ERROR_MESSAGE

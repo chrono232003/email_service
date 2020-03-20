@@ -1,5 +1,6 @@
-from classes import Send_Email
-#from classes import Field_Validation
+import os, sys
+sys.path.append(os.path.join(os.path.dirname(__file__), "../classes"))
+import Field_Validation
 
 import unittest
 
