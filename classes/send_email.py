@@ -84,7 +84,7 @@ class Send_Email:
 
     def send_email(self):
         try:
-            service = self.email_service[self.DEFAULT_MAIL_SERVICE]
+            service = self.email_service_obj[self.DEFAULT_MAIL_SERVICE]
             response = service['service']
             if response['status_code'] == service['success_code']:
                 return service["success_response"]

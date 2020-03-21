@@ -1,9 +1,7 @@
 import os, sys
 
 sys.path.append(os.path.join(os.path.dirname(__file__), "../classes"))
-sys.path.append(os.path.join(os.path.dirname(__file__), "../constants"))
 import process_email
-import const
 
 import unittest
 
@@ -55,6 +53,7 @@ class TestFieldValidations(unittest.TestCase):
 
     def test_overall_process_success(self):
         proc = process_email.Process(self.test_data_scenarios['email_content_success'])
+        print(proc.response())
         self.assertTrue('Your Email was sent successfully' in proc.response())
 
     def test_process_fail_email(self):
