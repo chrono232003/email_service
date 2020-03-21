@@ -24,7 +24,6 @@ class Send_Email:
                 "subject": self.data.get_subject(),
                 "text": self.data.get_body()}
             }
-            print(mail_data)
             resp = requests.post(mail_data["url"], auth=mail_data["auth"],data=mail_data["body"])
 
             return {
@@ -43,7 +42,7 @@ class Send_Email:
                           "to": [
                             {
                               "name": "Rob",
-                              "email": "chrono232003@yahoo.com"
+                              "email": "chrono232003@gmail.com"
                             }
                           ],
                           "subject": "Hello, World!"
@@ -51,7 +50,7 @@ class Send_Email:
                       ],
                       "from": {
                         "name": "Lance",
-                        "email": "from_address@example.com"
+                        "email": "chrono232003@yahoo.com"
                       },
                       "content": [
                         {
@@ -70,14 +69,14 @@ class Send_Email:
 
         def send_email(self):
             try:
-                mg_resp = send_via_mail_gun()
-                if mg_resp.status_code != const.MAIL_GUN_SUCCESS_CODE:
-                    sg_resp = send_via_sendgrid()
-                    if sg_resp.status_code != const.SEND_GRID_SUCCESS_CODE:
+                mg_resp = self.send_via_mail_gun()
+                if mg_resp['status_code'] != const.MAIL_GUN_SUCCESS_CODE:
+                    sg_resp = self.send_via_sendgrid()
+                    if sg_resp['status_code'] != const.SEND_GRID_SUCCESS_CODE:
                         return const.EMAIL_FAILED_TO_SEND_MESSAGE
                     else:
-                        return const.SUCCESS_MESSAGE_TO_USER
+                        return const.SUCCESS_MESSAGE_TO_USER_SEND_GRID
                 else:
-                    return const.SUCCESS_MESSAGE_TO_USER
-            except:
-                return const.TECHNICAL_ERROR_MESSAGE
+                    return const.SUCCESS_MESSAGE_TO_USER_MAIL_GUN
+            except Exception as e:
+                return const.TECHNICAL_ERROR_MESSAGE + str(e)

@@ -1,3 +1,9 @@
+import os, sys
+sys.path.append(os.path.join(os.path.dirname(__file__), "../classes"))
+sys.path.append(os.path.join(os.path.dirname(__file__), "../constants"))
+
+import field_validation
+
 class Data:
 
     def get_to_email(self):
@@ -19,6 +25,11 @@ class Data:
         return self.__body
 
     def __init__(self, email_content):
+
+        #validate the data before storing it. If there is an issue, send the error back to the view.
+        validation = field_validation.Validation()
+        if validation.data_validates_succesfully(self.data):
+
         self.__to_email = email_content['recipient_email']
         self.__to_name = email_content['recipient_name']
         self.__from_email = email_content['sender_email']

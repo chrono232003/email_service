@@ -1,5 +1,5 @@
 import flask
-from classes import Process_Email
+from classes import process_email
 from flask import request, jsonify, render_template
 
 app = flask.Flask(__name__)
@@ -14,7 +14,7 @@ def index():
 @app.route('/api/v1/email/send', methods=['POST'])
 def proc_email():
     if request.form:
-        email = Process_Email.Process(request.form)
+        email = process_email.Process(request.form)
         return email.response()
 
 app.run()

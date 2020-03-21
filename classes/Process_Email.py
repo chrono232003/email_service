@@ -1,27 +1,25 @@
-from classes import Field_Validation
-from classes import Send_Email
-import json
 import os, sys
-
 sys.path.append(os.path.join(os.path.dirname(__file__), "../classes"))
+sys.path.append(os.path.join(os.path.dirname(__file__), "../constants"))
+
+import field_validation
+import Send_Email
 import email_data
-
-
-##global responses
-MISSING_EMAIL_CONTENT = "The data is missing or not valid."
+import const
 
 class Process:
 
     def __init__(self, email_content):
-
         #Check to make sure that we are getting email content here and that it is in json format
         if email_content:
             #store information in a data model
-            data = email_data.Data(email_content)
+            self.data = email_data.Data(email_content)
         else:
-            return MISSING_EMAIL_CONTENT
+            return const.MISSING_EMAIL_CONTENT
 
     def response(self):
-        #validation = Field_Validation.Validation()
-        send_email = Send_Email.Send_Email(data)
+        validation = field_validation.Validation()
+        if validation.data_validates_succesfully(self.data):
+
+        send_email = Send_Email.Send_Email(self.data)
         return send_email.send_email()
