@@ -1,5 +1,8 @@
 import re
+import os, sys
 
+sys.path.append(os.path.join(os.path.dirname(__file__), "../constants"))
+import const
 
 class Validation:
 
@@ -14,25 +17,25 @@ class Validation:
 
         # check each field individually
         for val_func_passed in validation_arr:
-            print(val_func_passed)
             if val_func_passed is not None:
+                #if there is a validation failure, return the error string
                 return val_func_passed
-        print("hit")
-        return True
+        #everything passed
+        return const.VALIDATION_SUCCESS_STRING
 
     # utility classes
     def __email_is_valid(self, email):
-        regex = re.compile('^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$')
-        return None if regex.search(email) else "Please enter a valid email."
+        regex = re.compile(r'^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$')
+        return None if regex.search(email) else const.VALIDATION_FAIL_EMAIL_STRING
 
     def __name_is_valid(self, name):
         regex = re.compile(r'^[aA-zZ\s]+$')
-        return None if regex.match(name) else "Please enter a valid name."
+        return None if regex.match(name) else const.VALIDATION_FAIL_NAME_STRING
 
     def __subject_is_valid(self, subject):
-        regex = re.compile(r'^[\w\d\s_-]*$')
-        return None if regex.match(subject) else "Please enter a valid subject."
+        regex = re.compile(r'^[\w\d\s?,_-]*$')
+        return None if regex.match(subject) else const.VALIDATION_FAIL_SUBJECT_STRING
 
     def __body_is_valid(self, body):
         regex = re.compile(r'^[\w\d\s_-]*$')
-        return None if regex.search(body) else "Please enter a valid body."
+        return None if regex.search(body) else const.VALIDATION_FAIL_BODY_STRING
