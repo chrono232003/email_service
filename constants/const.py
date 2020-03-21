@@ -1,10 +1,10 @@
 #form field names
-TO_NAME    = "recipient_name"
-TO_EMAIL   = "recipient_email"
-FROM_NAME  = "sender_name"
-FROM_EMAIL = "sender_email"
-SUBJECT    = "email_subject"
-BODY       = "email_body"
+TO_NAME    = "to_name"
+TO_EMAIL   = "to"
+FROM_NAME  = "from_name"
+FROM_EMAIL = "from"
+SUBJECT    = "subject"
+BODY       = "body"
 
 #messages to end user
 SUCCESS_MESSAGE_TO_USER_MAIL_GUN  = "Your Email was sent successfully through Mail Gun!"
@@ -19,6 +19,10 @@ VALIDATION_FAIL_EMAIL_STRING   = "Please enter a valid email."
 VALIDATION_FAIL_NAME_STRING    = "Please enter a valid name."
 VALIDATION_FAIL_SUBJECT_STRING = "Please enter a valid subject."
 VALIDATION_FAIL_BODY_STRING    = "Please enter a valid body."
+
+#api_endpoints
+SEND_GRID_ENDPOINT = "https://api.sendgrid.com/v3/mail/send"
+MAIL_GUN_ENDPOINT = "https://api.mailgun.net/v3/sandbox81a896c981834ea09476e7b153d9ba24.mailgun.org/messages"
 
 #api status codes
 MAIL_GUN_SUCCESS_CODE  = 200

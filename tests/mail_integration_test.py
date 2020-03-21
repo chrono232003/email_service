@@ -10,12 +10,12 @@ class TestEmailServices(unittest.TestCase):
 
 
     test_email_content = {
-    "email_body": "<h1>Hi there!<h1><p>This is a sample of a successful email body</p>",
-    "email_subject": "Hello, how are you?",
-    "recipient_email": "chrono232003@yahoo.com",
-    "recipient_name": "Rec Mcgee",
-    "sender_email": "chrono232003@yahoo.com",
-    "sender_name": "Lance Test"
+    "body": "<h1>Hi there!<h1><p>This is a sample of a successful email body</p>",
+    "subject": "Hello, how are you?",
+    "to": "chrono232003@yahoo.com",
+    "to_name": "Rec Mcgee",
+    "from": "chrono232003@yahoo.com",
+    "from_name": "Lance Test"
     }
 
 

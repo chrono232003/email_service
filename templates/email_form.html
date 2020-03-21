@@ -28,15 +28,15 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="sender_name">Sender Name*</label>
-                                        <input id="sender_name" type="text" name="sender_name" class="form-control" placeholder="Please enter the sender's name *" required="required" data-error="Sender Name is required.">
+                                        <label for="from_name">Sender Name*</label>
+                                        <input id="from_name" type="text" name="from_name" class="form-control" placeholder="Please enter the sender's name *" required="required" data-error="Sender Name is required.">
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="sender_email">Sender Email *</label>
-                                        <input id="sender_email" type="email" name="sender_email" class="form-control" placeholder="Please enter sender's email *" required="required" data-error="Valid email is required.">
+                                        <label for="from">Sender Email *</label>
+                                        <input id="from" type="email" name="from" class="form-control" placeholder="Please enter sender's email *" required="required" data-error="Valid email is required.">
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div>
@@ -44,24 +44,15 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="recipient_name">Recipient Name*</label>
-                                        <input id="recipient_name" type="text" name="recipient_name" class="form-control" placeholder="Please enter the recipient's name *" required="required" data-error="Recipient Name is required.">
+                                        <label for="to_name">Recipient Name*</label>
+                                        <input id="to_name" type="text" name="to_name" class="form-control" placeholder="Please enter the recipient's name *" required="required" data-error="Recipient Name is required.">
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="recipient_email">Recipient Email *</label>
-                                        <input id="recipient_email" type="email" name="recipient_email" class="form-control" placeholder="Please enter recipient's email *" required="required" data-error="Valid email is required.">
-                                        <div class="help-block with-errors"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label for="email_subject">Subject *</label>
-                                        <input type="text" id="email_subject" name="email_subject" class="form-control" placeholder="Email Subject Line *" required="required" data-error="Subject is required.">
+                                        <label for="to">Recipient Email *</label>
+                                        <input id="to" type="to" name="recipient_email" class="form-control" placeholder="Please enter recipient's email *" required="required" data-error="Valid email is required.">
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div>
@@ -69,8 +60,17 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="email_body">Email Body *</label>
-                                        <textarea id="email_body" name="email_body" class="form-control" placeholder="Email Body *" rows="4" required="required" data-error="Email Body is required."></textarea>
+                                        <label for="subject">Subject *</label>
+                                        <input type="text" id="subject" name="subject" class="form-control" placeholder="Email Subject Line *" required="required" data-error="Subject is required.">
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="body">Email Body *</label>
+                                        <textarea id="body" name="body" class="form-control" placeholder="Email Body *" rows="4" required="required" data-error="Email Body is required."></textarea>
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div>

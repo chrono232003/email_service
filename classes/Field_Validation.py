@@ -8,12 +8,12 @@ class Validation:
 
     def data_validates_successfully(self, email_content):
         
-        validation_arr = [self.__email_is_valid(email_content['recipient_email']),
-                          self.__email_is_valid(email_content['sender_email']),
-                          self.__name_is_valid(email_content['recipient_name']),
-                          self.__name_is_valid(email_content['sender_name']),
-                          self.__subject_is_valid(email_content['email_subject']),
-                          self.__body_is_valid(email_content['email_body'])]
+        validation_arr = [self.__email_is_valid(email_content[const.TO_EMAIL]),
+                          self.__email_is_valid(email_content[const.FROM_EMAIL]),
+                          self.__name_is_valid(email_content[const.TO_NAME]),
+                          self.__name_is_valid(email_content[const.FROM_NAME]),
+                          self.__subject_is_valid(email_content[const.SUBJECT]),
+                          self.__body_is_valid(email_content[const.BODY])]
 
 
         # check each field individually

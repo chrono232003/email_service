@@ -12,12 +12,12 @@ class TestFieldValidations(unittest.TestCase):
     # globally declare the validation and test_data classes
     test_data_scenarios = {
         "data_content_success": {
-            "email_body": "<h1>This is a title section</h1><div><p>This is a sample of a successful email body<p></div>",
-            "email_subject": "Hello, how are you?",
-            "recipient_email": "test@gmail.com",
-            "recipient_name": "Test Testerson",
-            "sender_email": "okay@gmail.com",
-            "sender_name": "Sender Mcgee"
+            "body": "<h1>This is a title section</h1><div><p>This is a sample of a successful email body<p></div>",
+            "subject": "Hello, how are you?",
+            "to": "test@gmail.com",
+            "to_name": "Test Testerson",
+            "from": "okay@gmail.com",
+            "from_name": "Sender Mcgee"
         }
     }
 
