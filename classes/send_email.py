@@ -41,21 +41,21 @@ class Send_Email:
                         {
                           "to": [
                             {
-                              "name": "Rob",
-                              "email": "chrono232003@gmail.com"
+                              "name": self.data.get_to_name(),
+                              "email": self.data.get_to_email()
                             }
                           ],
-                          "subject": "Hello, World!"
+                          "subject": self.data.get_subject()
                         }
                       ],
                       "from": {
-                        "name": "Lance",
-                        "email": "chrono232003@yahoo.com"
+                        "name": self.data.get_from_name(),
+                        "email": self.data.get_from_email()
                       },
                       "content": [
                         {
                           "type": "text/plain",
-                          "value": "Hello, World!"
+                          "value": self.data.get_body()
                         }
                       ]
                     }
