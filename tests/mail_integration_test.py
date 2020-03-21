@@ -3,8 +3,8 @@ import unittest
 import os, sys
 sys.path.append(os.path.join(os.path.dirname(__file__), "../classes"))
 
-import Send_Email
-import email_data
+import send_email
+import email_data_model
 
 class TestEmailServices(unittest.TestCase):
 
@@ -20,8 +20,8 @@ class TestEmailServices(unittest.TestCase):
 
 
     #globally declare email and test_data classes
-    data = email_data.Data(test_email_content)
-    email = Send_Email.Send_Email(data)
+    data = email_data_model.Data(test_email_content)
+    email = send_email.Send_Email(data)
 
     def test_mail_gun_success(self):
         self.assertEqual(self.email.send_via_mail_gun()['status_code'], 200)

@@ -15,6 +15,20 @@ class Send_Email:
         def __init__(self, data):
             self.data = data
 
+            #list of mail service priority first to last
+            self.email_service_obj = [
+                {
+                    "service": self.send_via_mail_gun(),
+                    "success_code": const.MAIL_GUN_SUCCESS_CODE,
+                    "success_response": const.SUCCESS_MESSAGE_TO_USER_MAIL_GUN
+                },
+                {
+                    "service": self.send_via_sendgrid(),
+                    "success_code": const.SEND_GRID_SUCCESS_CODE,
+                    "success_response": const.SUCCESS_MESSAGE_TO_USER_SEND_GRID
+                }
+            ]
+
         def send_via_mail_gun(self):
             mail_data = {
             "url": "https://api.mailgun.net/v3/sandbox81a896c981834ea09476e7b153d9ba24.mailgun.org/messages",
@@ -69,14 +83,14 @@ class Send_Email:
 
         def send_email(self):
             try:
-                mg_resp = self.send_via_mail_gun()
-                if mg_resp['status_code'] != const.MAIL_GUN_SUCCESS_CODE:
-                    sg_resp = self.send_via_sendgrid()
-                    if sg_resp['status_code'] != const.SEND_GRID_SUCCESS_CODE:
-                        return const.EMAIL_FAILED_TO_SEND_MESSAGE
-                    else:
-                        return const.SUCCESS_MESSAGE_TO_USER_SEND_GRID
-                else:
-                    return const.SUCCESS_MESSAGE_TO_USER_MAIL_GUN
+                for email_service in self.email_service_obj:
+                    response = email_service['service']
+                    if response['status_code'] == email_service['success_code']:
+                        return email_service["success_response"]
+
+                #All the email services failed to send an email
+                return const.EMAIL_FAILED_TO_SEND_MESSAGE
+
+            #technical error on our end
             except Exception as e:
                 return const.TECHNICAL_ERROR_MESSAGE + str(e)
