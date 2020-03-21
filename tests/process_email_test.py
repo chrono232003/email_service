@@ -12,9 +12,9 @@ class TestFieldValidations(unittest.TestCase):
         "email_content_success": {
             "body": "<h1>This is a title section</h1><div><p>This is a sample of a successful email body<p></div>",
             "subject": "Hello, how are you?",
-            "to": "test@gmail.com",
+            "to": "chrono23200@yahoo.com",
             "to_name": "Test Testerson",
-            "from": "okay@gmail.com.com",
+            "from": "chrono23200@yahoo.com",
             "from_name": "Sender Mcgee"
         },
         "email_content_fail_email": {

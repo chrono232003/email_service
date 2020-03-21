@@ -18,12 +18,12 @@ class Send_Email:
         self.data = data
 
         self.email_service_obj = {
-            "sendgrid": {
+            "mailgun": {
                 "service": self.send_via_mail_gun(),
                 "success_code": const.MAIL_GUN_SUCCESS_CODE,
                 "success_response": const.SUCCESS_MESSAGE_TO_USER_MAIL_GUN
             },
-            "mailgun": {
+            "sendgrid": {
                 "service": self.send_via_sendgrid(),
                 "success_code": const.SEND_GRID_SUCCESS_CODE,
                 "success_response": const.SUCCESS_MESSAGE_TO_USER_SEND_GRID
