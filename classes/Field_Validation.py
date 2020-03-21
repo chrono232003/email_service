@@ -7,6 +7,7 @@ import const
 class Validation:
 
     def data_validates_successfully(self, email_content):
+        
         validation_arr = [self.__email_is_valid(email_content['recipient_email']),
                           self.__email_is_valid(email_content['sender_email']),
                           self.__name_is_valid(email_content['recipient_name']),
@@ -36,6 +37,7 @@ class Validation:
         regex = re.compile(r'^[\w\d\s?,_-]*$')
         return None if regex.match(subject) else const.VALIDATION_FAIL_SUBJECT_STRING
 
+    #NOTE: validate the body with the html tags first and strip them later
     def __body_is_valid(self, body):
-        regex = re.compile(r'^[\w\d\s_-]*$')
+        regex = re.compile(r'^[\w\d\s<>/_-]*$')
         return None if regex.search(body) else const.VALIDATION_FAIL_BODY_STRING

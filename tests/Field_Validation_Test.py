@@ -13,7 +13,7 @@ class TestFieldValidations(unittest.TestCase):
     validation_obj = field_validation.Validation()
     test_data_scenarios = {
         "email_content_success": {
-            "email_body": "This is a sample of a successful email body",
+            "email_body": "<h1>This is a title section</h1><div><p>This is a sample of a successful email body<p></div>",
             "email_subject": "Hello, how are you?",
             "recipient_email": "test@gmail.com",
             "recipient_name": "Test Testerson",
@@ -21,7 +21,7 @@ class TestFieldValidations(unittest.TestCase):
             "sender_name": "Sender Mcgee"
         },
         "email_content_fail_email": {
-            "email_body": "This is a sample of a successful email body",
+            "email_body": "<h1>This is a title section</h1><div><p>This is a sample of a successful email body<p></div>",
             "email_subject": "Testing the subject line!",
             "recipient_email": "test!@@gmail.com",
             "recipient_name": "Lance",
@@ -29,7 +29,7 @@ class TestFieldValidations(unittest.TestCase):
             "sender_name": "Dan Fuller"
         },
         "email_content_fail_name": {
-            "email_body": "This is a sample of a successful email body",
+            "email_body": "<h1>This is a title section</h1><div><p>This is a sample of a successful email body<p></div>",
             "email_subject": "Hello, how are you?",
             "recipient_email": "test@gmail.com",
             "recipient_name": "Rec/Mcgee",
@@ -37,7 +37,7 @@ class TestFieldValidations(unittest.TestCase):
             "sender_name": "Sender Mcgee"
         },
         "email_content_fail_subject": {
-            "email_body": "This is a sample of a successful email body",
+            "email_body": "<h1>This is a title section</h1><div><p>This is a sample of a successful email body<p></div>",
             "email_subject": "This@@is /\Spam",
             "recipient_email": "test@gmail.com",
             "recipient_name": "Rec Mcgee",
@@ -45,7 +45,7 @@ class TestFieldValidations(unittest.TestCase):
             "sender_name": "Sender Mcgee"
         },
         "email_content_fail_body": {
-            "email_body": "</h1>hey\\</h1>",
+            "email_body": "<h1\\>This is a title section</h1>#$<div><p>This is a sample of a successful email body<p></div>",
             "email_subject": "Hello how are you",
             "recipient_email": "test@gmail.com",
             "recipient_name": "Rec Mcgee",
