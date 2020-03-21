@@ -15,7 +15,9 @@
         - Mail Gun API key - Get this from the Mail Gun site when you sign up for email services.
         - There is also a preferred mail service variable that defaults to Sendgrid but there are 2 options (sendgrid, mailgun)
 
-    4. There are a couple ways to launch the program
+    4. Testing (Optional) - In the root file, there is a cmd called 'run_tests.cmd' which will run some of the tests including an success integration test with the default email service.
+
+    5. There are a couple ways to launch the program
         - With Python prerequisites already installed: run launch.py
         - If you would like to check if you have the prerequistes and install if you don't: run setup.py
 
