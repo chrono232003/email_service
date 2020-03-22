@@ -31,10 +31,10 @@ class Data:
         self.__from_email = email_content[const.FROM_EMAIL]
         self.__from_name = email_content[const.FROM_NAME]
         self.__subject = email_content[const.SUBJECT]
-        self.__body = self.strip_html_from_body(email_content[const.BODY])
+        self.__body = self.__strip_html_from_body(email_content[const.BODY])
 
     #This function will strip the html tags and replace them with spaces.
-    def strip_html_from_body(self, body):
+    def __strip_html_from_body(self, body):
         content_no_tags = re.sub('<[^<]+?>', ' ', body)
         content_no_tags = re.sub(' +', ' ', content_no_tags)
         return content_no_tags.strip()
