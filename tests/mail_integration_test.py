@@ -14,7 +14,7 @@ class TestEmailServices(unittest.TestCase):
     "subject": "Hello, how are you?",
     "to": "chrono232003@yahoo.com",
     "to_name": "Rec Mcgee",
-    "from": "chrono232003@yahoo.com",
+    "from": "chrono232003@gmail.com",
     "from_name": "Lance Test"
     }
 
