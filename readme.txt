@@ -34,7 +34,8 @@ For one, I would have fleshed out the UI. The form upon launching the applicatio
 and structuring html. The results page is pretty simple. It just shows a user if their email has been send or not or any form errors if front end validation was bypassed. Obviously in a real work scenario
 I would display the form again with the various errors for a user to correct.
 
-Another item I would have built on was the testing. I put in some tests around the classes, but there could always be more test cases to make the testing more robust.
+Another item I would have built on was the testing. I put in some tests around the classes, but there could always be more test cases to make the testing more robust. There are so many different variations with
+free text fields and these should be tested thoroughly.
 
 I was also thinking that it could have a setup cmd or exe file that checks the users system for all the prerequisites such as the python version and packages. This would allow for a one click full install.
 

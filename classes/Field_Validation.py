@@ -39,5 +39,5 @@ class Validation:
 
     #NOTE: validate the body with the html tags first and strip them later
     def __body_is_valid(self, body):
-        regex = re.compile(r'^[\w\d\s<>/_-]*$')
+        regex = re.compile(r'^[\w\d\s?<>/_-]*$')
         return None if body and regex.search(body) else const.VALIDATION_FAIL_BODY_STRING
