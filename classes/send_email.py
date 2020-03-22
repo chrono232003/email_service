@@ -101,4 +101,4 @@ class Send_Email:
 
         # technical error on our end
         except Exception as e:
-            return const.TECHNICAL_ERROR_MESSAGE + str(e)
+            return const.TECHNICAL_ERROR_MESSAGE
