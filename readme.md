@@ -33,6 +33,8 @@ There are a few things that I would have built differently or expanded upon if I
 
 1. For one, I would have fleshed out the UI. The form upon launching the application is pretty simplified and could be a little bit more intuitive for the user. For example, A user can add test or HTML in the body field. Ideally a text editor plugin would be handy for writing and structuring html. The results page is pretty simple. It just shows a user if their email has been send or not or any form errors if front end validation was bypassed. Obviously in a real work scenario, I would display the form again with the various errors for a user to correct.
 
+1. Data Models - I am a big believer in structured data. If I had more time on the project, I would have created a data model for each request. The data is much the same, but request.post is pretty common in python with the general variation of the body. I would have abstracted the request with individual subclasses for each mail api. That way, the code would be extendable if we add more api services. 
+
 1. Another item I would have built on was the testing. I put in some tests around the classes, but there could always be more test cases to make the testing more robust. There are so many different variations with free text fields and these should be tested thoroughly.
 
 1. I was also thinking that it could have a setup cmd or exe file that checks the users system for all the prerequisites such as the python version and packages. This would allow for a one click full install.
