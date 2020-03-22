@@ -12,6 +12,9 @@ class Send_Email:
     MAIL_GUN_API_KEY = os.getenv('MAIL_GUN_API_KEY')
     SEND_GRID_API_KEY = os.getenv('SEND_GRID_API_KEY')
 
+    SEND_GRID_ENDPOINT = os.getenv('SEND_GRID_ENDPOINT')
+    MAIL_GUN_ENDPOINT = os.getenv('MAIL_GUN_ENDPOINT')
+
     DEFAULT_MAIL_SERVICE = os.getenv('MAIL_SERVICE_PROVIDER')
 
     def __init__(self, data):
@@ -32,7 +35,7 @@ class Send_Email:
 
     def send_via_mail_gun(self):
         mail_data = {
-            "url": const.MAIL_GUN_ENDPOINT,
+            "url": self.MAIL_GUN_ENDPOINT,
             "auth": ("api", self.MAIL_GUN_API_KEY),
             "body": {"from": self.data.get_from_name() + " " + "<" + self.data.get_from_email() + ">",
                      "to": [self.data.get_to_name(), self.data.get_to_email()],
@@ -49,7 +52,7 @@ class Send_Email:
     def send_via_sendgrid(self):
 
         mail_data = {
-            "url": const.SEND_GRID_ENDPOINT,
+            "url": self.SEND_GRID_ENDPOINT,
             "headers": {'Authorization': 'Bearer ' + self.SEND_GRID_API_KEY},
             "body": {
                 "personalizations": [
