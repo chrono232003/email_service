@@ -1,24 +1,26 @@
 # Prerequisites:
-    The user will need to have python installed and a couple of python packages (see below). These should all be available through pip.
-    #Packages:
-        - os
-        - sys
-        - requests
-        - dotenv
-        - re
+
+The user will need to have python installed and a couple of python packages (see below). These should all be available through pip.
+### Packages:
+* os
+* sys
+* requests
+* dotenv
+* re
 
 # How to install the application
-    1. Clone this repository locally to your system
-    1. Once cloned, navigate to the program folder root file.
-    1. In the root file, you will see an environmental variable file (.env_template) which contains 3 global variables (See below). This will need the proper information added and changed to '.env'
-        * Send Grid API key - Get this from the Send Grid site when you sign up for email services.
-        * Mail Gun API key - Get this from the Mail Gun site when you sign up for email services.
-        * There is also a preferred mail service variable that defaults to Sendgrid but there are 2 options (sendgrid, mailgun)
-    1. Testing (Optional) - In the root file, there is a cmd called 'run_tests.cmd' which will run some of the tests including an success integration test with the default email service.
 
-    1. There are a couple ways to launch the program
-        * With Python prerequisites already installed: run launch.py
-        * If you would like to check if you have the prerequistes and install if you don't: run setup.py
+1. Clone this repository locally to your system
+1. Once cloned, navigate to the program folder root file.
+1. In the root file, you will see an environmental variable file (.env_template) which contains 3 global variables (See below). This will need the proper information added and changed to '.env'
+    * Send Grid API key - Get this from the Send Grid site when you sign up for email services.
+    * Mail Gun API key - Get this from the Mail Gun site when you sign up for email services.
+    * There is also a preferred mail service variable that defaults to Sendgrid but there are 2 options (sendgrid, mailgun)
+1. Testing (Optional) - In the root file, there is a cmd called 'run_tests.cmd' which will run some of the tests including an success integration test with the default email service.
+
+1. There are a couple ways to launch the program
+    * With Python prerequisites already installed: run launch.py
+    * If you would like to check if you have the prerequistes and install if you don't: run setup.py
 
 # Language and Libraries
 
