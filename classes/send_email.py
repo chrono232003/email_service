@@ -34,56 +34,61 @@ class Send_Email:
         }
 
     def send_via_mail_gun(self):
-        mail_data = {
-            "url": self.MAIL_GUN_ENDPOINT,
-            "auth": ("api", self.MAIL_GUN_API_KEY),
-            "body": {"from": self.data.get_from_name() + " " + "<" + self.data.get_from_email() + ">",
-                     "to": [self.data.get_to_name(), self.data.get_to_email()],
-                     "subject": self.data.get_subject(),
-                     "text": self.data.get_body()}
-        }
-        resp = requests.post(mail_data["url"], auth=mail_data["auth"], data=mail_data["body"])
+        try:
+            mail_data = {
+                "url": self.MAIL_GUN_ENDPOINT,
+                "auth": ("api", self.MAIL_GUN_API_KEY),
+                "body": {"from": self.data.get_from_name() + " " + "<" + self.data.get_from_email() + ">",
+                         "to": [self.data.get_to_name(), self.data.get_to_email()],
+                         "subject": self.data.get_subject(),
+                         "text": self.data.get_body()}
+            }
+            resp = requests.post(mail_data["url"], auth=mail_data["auth"], data=mail_data["body"])
 
-        return {
-            "status_code": resp.status_code,
-            "message": resp.json()['message']
-        }
+            return {
+                "status_code": resp.status_code,
+                "message": resp.json()['message']
+            }
+        except Exception as e:
+            return const.TECHNICAL_ERROR_MESSAGE
 
     def send_via_sendgrid(self):
-
-        mail_data = {
-            "url": self.SEND_GRID_ENDPOINT,
-            "headers": {'Authorization': 'Bearer ' + self.SEND_GRID_API_KEY},
-            "body": {
-                "personalizations": [
-                    {
-                        "to": [
-                            {
-                                "name": self.data.get_to_name(),
-                                "email": self.data.get_to_email()
-                            }
-                        ],
-                        "subject": self.data.get_subject()
-                    }
-                ],
-                "from": {
-                    "name": self.data.get_from_name(),
-                    "email": self.data.get_from_email()
-                },
-                "content": [
-                    {
-                        "type": "text/plain",
-                        "value": self.data.get_body()
-                    }
-                ]
+        try:
+            mail_data = {
+                "url": self.SEND_GRID_ENDPOINT,
+                "headers": {'Authorization': 'Bearer ' + self.SEND_GRID_API_KEY},
+                "body": {
+                    "personalizations": [
+                        {
+                            "to": [
+                                {
+                                    "name": self.data.get_to_name(),
+                                    "email": self.data.get_to_email()
+                                }
+                            ],
+                            "subject": self.data.get_subject()
+                        }
+                    ],
+                    "from": {
+                        "name": self.data.get_from_name(),
+                        "email": self.data.get_from_email()
+                    },
+                    "content": [
+                        {
+                            "type": "text/plain",
+                            "value": self.data.get_body()
+                        }
+                    ]
+                }
             }
-        }
 
-        resp = requests.post(mail_data["url"], json=mail_data["body"], headers=mail_data["headers"])
+            resp = requests.post(mail_data["url"], json=mail_data["body"], headers=mail_data["headers"])
 
-        return {
-            "status_code": resp.status_code
-        }
+            return {
+                "status_code": resp.status_code
+            }
+        except Exception as e:
+            return const.TECHNICAL_ERROR_MESSAGE
 
     def send_email(self):
         try:
