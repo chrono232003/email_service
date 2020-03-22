@@ -7,7 +7,7 @@ import const
 
 load_dotenv()
 
-
+# send the actual email once all the validations are met.
 class Send_Email:
     MAIL_GUN_API_KEY = os.getenv('MAIL_GUN_API_KEY')
     SEND_GRID_API_KEY = os.getenv('SEND_GRID_API_KEY')

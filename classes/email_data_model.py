@@ -4,6 +4,7 @@ sys.path.append(os.path.join(os.path.dirname(__file__), "../constants"))
 
 import const
 
+# Store the user input into this structured data class for added structure to the program.
 class Data:
 
     def get_to_email(self):

@@ -7,6 +7,7 @@ import send_email
 import email_data_model
 import const
 
+# high level class that performs all the lower lever functions such as validation and triggering the email.
 class Process:
 
     def __init__(self, email_content):

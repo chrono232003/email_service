@@ -4,6 +4,7 @@ import os, sys
 sys.path.append(os.path.join(os.path.dirname(__file__), "../constants"))
 import const
 
+# perform validations on all the user input fields. Also, format the html to be plain text.
 class Validation:
 
     def data_validates_successfully(self, email_content):
