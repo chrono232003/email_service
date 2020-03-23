@@ -12,7 +12,7 @@ The user will need to have python installed and a couple of python packages (see
 
 1. Clone this repository locally to your system
 1. Once cloned, navigate to the program folder root file.
-1. In the root file, you will see an environmental variable file (.env_template) which contains 3 global variables (See below). This will need the proper information added and changed to '.env'
+1. In the root file, you will see an environmental variable file (.env_template) which contains 5 global variables (See below). This will need the proper information added and changed to '.env' (NOTE: it is very important to change the filename to '.env' and strip '_template' for the service to work).
     * Send Grid API endpoint - Get this from the Send Grid site when you sign up for email services.
     * Mail Gun API endpoint - Get this from the Mail Gun site when you sign up for email services.
     * Send Grid API key - Get this from the Send Grid site when you sign up for email services.
